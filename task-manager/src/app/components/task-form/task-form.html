@@ -1,0 +1,36 @@
+<div class="task-form">
+    <h2>{{ isEditMode ? '✏️ Editar Tarea' : '➕ Nueva Tarea' }}</h2>
+
+    <div *ngIf="loading" class="status">Cargando...</div>
+    <div *ngIf="error" class="status error">{{ error }}</div>
+
+    <form *ngIf="!loading" (ngSubmit)="onSubmit()">
+
+        <!-- Título -->
+        <div class="form-group">
+            <label for="title">Título *</label>
+            <input type="text" id="title" [(ngModel)]="task.title" name="title" placeholder="Escribe el título...">
+            <span *ngIf="task.title.length > 0 && task.title.length < 3" class="error-msg">
+                Mínimo 3 caracteres
+            </span>
+        </div>
+
+        <!-- Completada -->
+        <div class="form-group checkbox">
+            <label>
+                <input type="checkbox" [(ngModel)]="task.completed" name="completed">
+                Tarea completada
+            </label>
+        </div>
+
+        <!-- Botones -->
+        <div class="form-actions">
+            <button type="submit" [disabled]="!isFormValid()" class="btn btn-primary">
+                {{ isEditMode ? 'Guardar' : 'Crear' }}
+            </button>
+            <button type="button" (click)="cancel()" class="btn btn-secondary">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</div>
