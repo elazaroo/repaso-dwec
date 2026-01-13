@@ -13,6 +13,10 @@ Material de estudio para el examen final de DWEC con Angular.
 | [03-SOLUCION-PASO-A-PASO.md](./03-SOLUCION-PASO-A-PASO.md) | Solución explicada paso a paso |
 | [task-manager/](./task-manager/) | Proyecto Angular completo |
 
+### 🌐 Demo en vivo
+
+👉 **https://elazaroo.github.io/repaso-dwec/**
+
 ---
 
 ## 🎯 Temas cubiertos
