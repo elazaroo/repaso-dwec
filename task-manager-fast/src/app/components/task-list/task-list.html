@@ -1,0 +1,28 @@
+<div class="card p-3">
+  <h2>📋 Lista de Tareas</h2>
+  
+  <input class="form-control mb-3" [(ngModel)]="searchTerm" (input)="filterTasks()" placeholder="Buscar...">
+  
+  <p *ngIf="loading">⏳ Cargando...</p>
+  <p *ngIf="!loading && filteredTasks.length === 0">📭 No hay tareas</p>
+  
+  <table class="table" *ngIf="!loading && filteredTasks.length > 0">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of filteredTasks">
+        <td>{{ task.title }}</td>
+        <td>{{ task.completed ? '✅ Completada' : '⏳ Pendiente' }}</td>
+        <td>
+          <a class="btn btn-sm btn-primary me-1" [routerLink]="['/tasks/edit', task.id]">Editar</a>
+          <button class="btn btn-sm btn-danger" (click)="deleteTask(task)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
